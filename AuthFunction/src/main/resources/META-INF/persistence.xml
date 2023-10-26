@@ -7,7 +7,7 @@
 	<persistence-unit name="techfood" transaction-type="RESOURCE_LOCAL">
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.0.244:3306/techfood"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.0.244:33061/techfood"/>
 			<property name="javax.persistence.jdbc.user" value="techfood"/>
 			<property name="javax.persistence.jdbc.password" value="techfood"/>
 			
