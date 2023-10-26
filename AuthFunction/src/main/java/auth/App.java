@@ -15,7 +15,10 @@ public class App implements RequestHandler<APIGatewayCustomAuthorizerEvent, Auth
 
         try {
 
-            String principalId = "xxxx";
+            String document = input.getHeaders().get("X-Document");
+            System.out.println("Document " + document);
+
+            String principalId = document;
 
             String methodArn = input.getMethodArn();
             String[] arnPartials = methodArn.split(":");
@@ -31,13 +34,14 @@ public class App implements RequestHandler<APIGatewayCustomAuthorizerEvent, Auth
                 resource = apiGatewayArnPartials[3];
             }
 
-            String document = input.getHeaders().get("X-Document");
+
 
             AuthService authService = new AuthService();
             if (authService.validateAccess(document)){
+                System.out.println("Access Allowed");
                 return new AuthPolicy(principalId, AuthPolicy.PolicyDocument.getAllowAllPolicy(region, awsAccountId, restApiId, stage));
             }
-
+            System.out.println("Access Denied");
             return new AuthPolicy(principalId, AuthPolicy.PolicyDocument.getDenyAllPolicy(region, awsAccountId, restApiId, stage));
 
         }catch (Exception e ){
