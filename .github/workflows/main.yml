@@ -20,10 +20,10 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: sa-east-1
+          aws-region: us-east-1
       - name: Create AWS Lambda Function
         run: |
-          aws lambda create-function --function-name auth-lambda --runtime java17 --handler auth.App::handleRequest --role arn:aws:iam::332769750459:role/lambda-ex --zip-file fileb://target/auth-1.0.jar
+          aws lambda create-function --function-name auth-lambda --runtime java17 --handler auth.App::handleRequest --role arn:aws:iam::${{ secrets.USER_ID }}:role/lambda-ex --zip-file fileb://target/auth-1.0.jar
         continue-on-error: true  
       - name: Update Lambda Function    
         run: aws lambda update-function-code --function-name auth-lambda --zip-file fileb://target/auth-1.0.jar
