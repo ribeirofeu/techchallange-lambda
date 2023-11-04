@@ -23,7 +23,7 @@ jobs:
           aws-region: sa-east-1
       - name: Create AWS Lambda Function
         run: |
-          aws lambda create-function --function-name auth-lambda --runtime java17 --handler auth.App::handleRequest --role arn:aws:lambda:sa-east-1:332769750459:function:auth_lambda --zip-file fileb://target/auth-1.0.jar
+          aws lambda create-function --function-name auth-lambda --runtime java17 --handler auth.App::handleRequest --role arn:aws:iam::332769750459:role/lambda-ex --zip-file fileb://target/auth-1.0.jar
         continue-on-error: true  
       - name: Update Lambda Function    
         run: aws lambda update-function-code --function-name auth-lambda --zip-file fileb://target/auth-1.0.jar
