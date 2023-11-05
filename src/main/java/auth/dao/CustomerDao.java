@@ -40,6 +40,7 @@ public class CustomerDao {
       ps.close();
       conn.close();
     } catch (SQLException e) {
+      System.out.println("Error Connecting SQL" + e.getMessage());
       throw new RuntimeException(e);
     }
     return customer;
