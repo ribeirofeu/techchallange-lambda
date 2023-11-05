@@ -1,18 +1,23 @@
 package auth.service;
 
 
+import auth.config.ConnectionFactory;
 import auth.dao.CustomerDao;
 import auth.model.Customer;
-import auth.utils.JPAUtil;
 
-import javax.persistence.EntityManager;
+import java.sql.Connection;
+
 
 public class AuthService {
 
-    public boolean validateAccess (String document) {
-        EntityManager em = JPAUtil.getEntityManager();
-        CustomerDao dao = new CustomerDao(em);
-        Customer customer = dao.findByCpf(document);
+    public ConnectionFactory connection;
+
+    public AuthService() {
+        this.connection = new ConnectionFactory();
+    }
+    public boolean validateAccess (String cpf) {
+        Connection conn = connection.getConnection();
+        Customer customer = new CustomerDao(conn).findByCpf(cpf);
 
         if (customer == null ) {
             throw new RuntimeException("Not Found");

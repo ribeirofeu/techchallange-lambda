@@ -7,7 +7,7 @@
 	<persistence-unit name="techfood" transaction-type="RESOURCE_LOCAL">
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="${DB_URL}"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://techfood.cwww114bmt8r.us-east-1.rds.amazonaws.com:3306/techfood"/>
 			<property name="javax.persistence.jdbc.user" value="${DB_USER}"/>
 			<property name="javax.persistence.jdbc.password" value="${DB_PASSWORD}"/>
 			
