@@ -41,6 +41,7 @@ public class App implements RequestHandler<APIGatewayCustomAuthorizerEvent, Auth
             return new AuthPolicy(cpf, AuthPolicy.PolicyDocument.getDenyAllPolicy(region, awsAccountId, restApiId, stage));
 
         }catch (Exception e ){
+            System.out.println(e.getMessage());
             throw new RuntimeException("Unauthorized");
         }
     }
