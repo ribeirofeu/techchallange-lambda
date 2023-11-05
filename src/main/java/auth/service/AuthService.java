@@ -16,12 +16,12 @@ public class AuthService {
         this.connection = new ConnectionFactory();
     }
     public boolean validateAccess (String cpf) {
-        Connection conn = connection.getConnection();
-        Customer customer = new CustomerDao(conn).findByCpf(cpf);
-
-        if (customer == null ) {
-            throw new RuntimeException("Not Found");
-        }
+//        Connection conn = connection.getConnection();
+//        Customer customer = new CustomerDao(conn).findByCpf(cpf);
+//
+//        if (customer == null ) {
+//            throw new RuntimeException("Not Found");
+//        }
         return true;
     }
 }
