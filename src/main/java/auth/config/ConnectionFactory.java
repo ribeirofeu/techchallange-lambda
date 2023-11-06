@@ -23,8 +23,6 @@ public class ConnectionFactory {
     String dbPassword = System.getenv("DB_PASSWORD");
     String database = System.getenv("DB_DATABASE");
 
-    System.out.println("Vars " + url + dbUser + dbPassword + database);
-
     HikariConfig config = new HikariConfig();
     config.setJdbcUrl(getUrlConnection(url, database));
     config.setUsername(dbUser);
